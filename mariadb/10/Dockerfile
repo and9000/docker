@@ -1,5 +1,5 @@
-# Pull base image.
 FROM mariadb:10.0.19
+MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
 # Remove log_bin from config file
 RUN sed -ri 's/^(log_bin\t*=\.*)/#\1/' /etc/mysql/my.cnf \
