@@ -35,9 +35,7 @@ RUN deps=" \
 	&& chown tmpuser $JDK_FILE \
 	&& su tmpuser -c "yes | fakeroot make-jpkg $JDK_FILE" \
 	&& userdel tmpuser \
-	&& dpkg -i oracle*deb \
-	&& update-alternatives --install /usr/lib/mozilla/plugins/mozilla-javaplugin.so iceweasel-javaplugin.so $JAVA_HOME/jre/lib/amd64/libnpjp2.so 1 \
-	&& update-java-alternatives -s $JAVA_HOME \
+	&& dpkg -i oracle-java*.deb \
 	\
 	&& apt-get clean \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
