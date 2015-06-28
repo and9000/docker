@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:8.1
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
 ENV JAVA_VERSION 	8u45
