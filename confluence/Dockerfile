@@ -1,7 +1,7 @@
-FROM ibandrea/server-jre-oracle:8u51
+FROM ibandrea/server-jre-oracle:8u60
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV CONFLUENCE_VERSION 5.8.8
+ENV CONFLUENCE_VERSION 5.8.10
 
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.36
 
