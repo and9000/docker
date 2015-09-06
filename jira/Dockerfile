@@ -1,7 +1,7 @@
-FROM ibandrea/server-jre-oracle:8u51
+FROM ibandrea/server-jre-oracle:8u60
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV JIRA_VERSION 6.4.9
+ENV JIRA_VERSION 6.4.11
 
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.36
 
