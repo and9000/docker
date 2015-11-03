@@ -7,7 +7,7 @@ ENV JAVA_DIR_SUFF	b17
 ENV LC_ALL      	C
 ENV JAVA_HOME   	/usr/lib/jvm/jre-8-oracle-x64/
 
-ENV JRE_FILE		server-jre-$JAVA_VERSION-linux-x64.tar.gz
+ENV JRE_FILE		jre-$JAVA_VERSION-linux-x64.tar.gz
 ENV JRE_HTTP_PATH	http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_DIR_SUFF/$JRE_FILE
 
 RUN buildDeps=" \

@@ -5,10 +5,10 @@ ENV JAVA_VERSION 	8u66
 ENV JAVA_DIR_SUFF	b17
 
 ENV LC_ALL      	C
-ENV JAVA_HOME   	/usr/lib/jvm/jre-8-oracle-x64/
+ENV JAVA_HOME   	/usr/lib/jvm/jdk-8-oracle-x64/
 
-ENV JRE_FILE		server-jre-$JAVA_VERSION-linux-x64.tar.gz
-ENV JRE_HTTP_PATH	http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_DIR_SUFF/$JRE_FILE
+ENV JDK_FILE		jdk-$JAVA_VERSION-linux-x64.tar.gz
+ENV JDK_HTTP_PATH	http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_DIR_SUFF/$JDK_FILE
 
 RUN buildDeps=" \
 	java-package \
@@ -24,10 +24,10 @@ RUN buildDeps=" \
 	apt-get upgrade -y $buildDeps --no-install-recommends && \
 	\
 	cd /tmp && \
-	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$JRE_HTTP_PATH" && \
+	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$JDK_HTTP_PATH" && \
 	useradd -r tmpuser && \
-	chown tmpuser $JRE_FILE && \
-	su tmpuser -c "yes | fakeroot make-jpkg $JRE_FILE" && \
+	chown tmpuser $JDK_FILE && \
+	su tmpuser -c "yes | fakeroot make-jpkg $JDK_FILE" && \
 	userdel tmpuser && \
 	dpkg -i oracle-java*.deb && \
 	\
