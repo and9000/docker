@@ -1,13 +1,14 @@
-FROM ibandrea/server-jre-oracle:8u51
+FROM ibandrea/server-jre-oracle:8u66
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV JIRA_VERSION 6.4.9
+ENV JIRA_VERSION 7.0.0
 
-ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.36
+ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.37
 
-ENV JIRA_HOME     /var/local/atlassian/jira
-ENV JIRA_INSTALL  /usr/local/atlassian/jira
-ENV JIRA_USER	  jira
+ENV JIRA_HOME     	/var/local/atlassian/jira
+ENV JIRA_INSTALL  	/usr/local/atlassian/jira
+ENV JIRA_USER	  	jira
+ENV JIRA_INSTALLER	atlassian-jira-software-$JIRA_VERSION-jira-$JIRA_VERSION.tar.gz
 
 RUN deps=" \
 	libtcnative-1 xmlstarlet \
@@ -21,9 +22,9 @@ RUN deps=" \
 	useradd --create-home --shell /bin/bash $JIRA_USER && \
 	\
 	cd /tmp && \
-	wget --no-check-certificate http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-$JIRA_VERSION.tar.gz && \
+	wget --no-check-certificate http://www.atlassian.com/software/jira/downloads/binary/$JIRA_INSTALLER && \
 	mkdir -p $JIRA_INSTALL && \
-	tar zxf atlassian-jira-$JIRA_VERSION.tar.gz --strip=1 -C $JIRA_INSTALL && \
+	tar zxf $JIRA_INSTALLER --strip=1 -C $JIRA_INSTALL && \
 	mkdir -p $JIRA_HOME && \
 	echo -e "\njira.home=$JIRA_HOME" >> "$JIRA_INSTALL/atlassian-jira/WEB-INF/classes/jira-application.properties" && \
 	sed -ri 's/JIRA_USER.*/JIRA_USER="$JIRA_USER" ##/' $JIRA_INSTALL/bin/user.sh && \
