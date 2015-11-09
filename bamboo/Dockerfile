@@ -1,4 +1,4 @@
-FROM ibandrea/server-jre-oracle:8u66
+FROM ibandrea/jdk-oracle:8u66
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
 ENV BAMBOO_VERSION 5.9.7
