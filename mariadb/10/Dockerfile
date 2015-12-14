@@ -1,4 +1,4 @@
-FROM mariadb:10.0.19
+FROM mariadb:10.0.22
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
 # Remove log_bin from config file
