@@ -1,4 +1,4 @@
-FROM ibandrea/mariadb:10.0.19
+FROM ibandrea/mariadb:10.0.22
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
 # Let mariadb run as root
