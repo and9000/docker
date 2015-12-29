@@ -1,7 +1,7 @@
 FROM ibandrea/server-jre-oracle:8u66
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV JIRA_VERSION 7.0.0
+ENV JIRA_VERSION 7.0.5
 
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.37
 
@@ -47,3 +47,4 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["/usr/local/atlassian/jira/bin/start-jira.sh", "-fg"]
+
