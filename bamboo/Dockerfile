@@ -1,9 +1,9 @@
-FROM ibandrea/jdk-oracle:8u66
+FROM openjdk:8
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV BAMBOO_VERSION 5.9.7
+ENV BAMBOO_VERSION 5.15.0.1
 
-ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.37
+ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.40
 
 ENV BAMBOO_HOME     	/var/local/atlassian/bamboo
 ENV BAMBOO_INSTALL  	/usr/local/atlassian/bamboo
