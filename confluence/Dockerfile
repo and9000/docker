@@ -1,9 +1,9 @@
-FROM ibandrea/server-jre-oracle:8u66
+FROM ibandrea/jdk-oracle:8u121
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV CONFLUENCE_VERSION 5.8.15
+ENV CONFLUENCE_VERSION 6.0.6
 
-ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.37
+ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.41
 
 ENV CONFLUENCE_HOME     	/var/local/atlassian/confluence
 ENV CONFLUENCE_INSTALL  	/usr/local/atlassian/confluence
