@@ -1,36 +1,21 @@
-FROM ubuntu:14.04.3
+FROM ubuntu:16.04
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV JAVA_VERSION 	8u66
-ENV JAVA_DIR_SUFF	b17
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-ENV LC_ALL      	C
-ENV JAVA_HOME   	/usr/lib/jvm/jdk-8-oracle-x64/
-
-ENV JDK_FILE		jdk-$JAVA_VERSION-linux-x64.tar.gz
-ENV JDK_HTTP_PATH	http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_DIR_SUFF/$JDK_FILE
-
-RUN buildDeps=" \
-	java-package \
-	wget \
-	" && \
-	\
-	set -x && \
-	echo 'deb http://archive.ubuntu.com/ubuntu/ trusty multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb http://archive.ubuntu.com/ubuntu/ trusty-security multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
+RUN deps=" \
+    software-properties-common \
+    " && \
     export DEBIAN_FRONTEND=noninteractive && \
-	apt-get update && \
-	apt-get upgrade -y $buildDeps --no-install-recommends && \
-	\
-	cd /tmp && \
-	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$JDK_HTTP_PATH" && \
-	useradd -r tmpuser && \
-	chown tmpuser $JDK_FILE && \
-	su tmpuser -c "yes | fakeroot make-jpkg $JDK_FILE" && \
-	userdel tmpuser && \
-	dpkg -i oracle-java*.deb && \
-	\
-	apt-get clean && \
-	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps && \
-	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get update && \
+    apt-get upgrade -y $deps --no-install-recommends && \
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+    add-apt-repository -y ppa:webupd8team/java && \
+    apt-get update && \
+    apt-get install -y oracle-java8-installer oracle-java8-set-default && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/oracle-jdk8-installer
+
+WORKDIR /data
+
+CMD ['bash']
