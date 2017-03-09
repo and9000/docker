@@ -1,7 +1,7 @@
-FROM openjdk:8
+FROM ibandrea/jdk-oracle:8u121
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV BAMBOO_VERSION 5.15.0.1
+ENV BAMBOO_VERSION 5.15.2
 
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.40
 
