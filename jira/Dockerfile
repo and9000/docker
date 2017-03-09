@@ -1,14 +1,14 @@
-FROM ibandrea/server-jre-oracle:8u66
+FROM ibandrea/jdk-oracle:8u121
 MAINTAINER Andrea Lorenzetti <andrea@ibuildings.it>
 
-ENV JIRA_VERSION 7.0.5
+ENV JIRA_VERSION 7.3.2
 
-ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.37
+ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.41
 
 ENV JIRA_HOME     	/var/local/atlassian/jira
 ENV JIRA_INSTALL  	/usr/local/atlassian/jira
 ENV JIRA_USER	  	jira
-ENV JIRA_INSTALLER	atlassian-jira-software-$JIRA_VERSION-jira-$JIRA_VERSION.tar.gz
+ENV JIRA_INSTALLER	atlassian-jira-software-$JIRA_VERSION.tar.gz
 
 RUN deps=" \
 	libtcnative-1 xmlstarlet \
